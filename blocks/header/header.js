@@ -154,9 +154,11 @@ function decorateNavSection(section) {
   if (!navList) return;
   navList.classList.add('main-nav-list');
 
+ if (navContent) {
   const nav = document.createElement('nav');
   nav.append(navList);
   navContent.append(nav);
+ } else { return; }
 
   const mainNavItems = section.querySelectorAll('nav > ul > li');
   for (const navItem of mainNavItems) {

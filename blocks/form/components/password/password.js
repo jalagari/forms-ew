@@ -1,5 +1,6 @@
 export default function passwordLayout(fieldDiv) {
-  const inputField = fieldDiv.querySelector('input[type="text"]');
+  const inputField = fieldDiv.querySelector('input');
+  if (!inputField) return fieldDiv;
   inputField.type = 'password';
 
   const togglePasswordIcon = document.createElement('i');

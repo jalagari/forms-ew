@@ -445,7 +445,13 @@ export async function fetchForm(pathname) {
   let resp = await fetch(path);
 
   if (resp?.headers?.get('Content-Type')?.includes('application/json')) {
-    data = await resp.json();
+    const json = await resp.json();
+    // New sheet structure: form definition lives in data[0].Value
+    if (json?.[':type'] === 'sheet' && json?.data?.[0]?.Value?.adaptiveform) {
+      data = json.data[0].Value;
+    } else {
+      data = json;
+    }
   } else if (resp?.headers?.get('Content-Type')?.includes('text/html')) {
     resp = await fetch(path);
     data = await resp.text().then((html) => {

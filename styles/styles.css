@@ -1,101 +1,329 @@
-/*
- * Copyright 2020 Adobe. All rights reserved.
- * This file is licensed to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may obtain a copy
- * of the License at http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under
- * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
- * OF ANY KIND, either express or implied. See the License for the specific language
- * governing permissions and limitations under the License.
- */
+@font-face {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/styles/fonts/montserrat.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF,
+    U+0131,
+    U+0152-0153,
+    U+02BB-02BC,
+    U+02C6,
+    U+02DA,
+    U+02DC,
+    U+0304,
+    U+0308,
+    U+0329,
+    U+2000-206F,
+    U+20AC,
+    U+2122,
+    U+2191,
+    U+2193,
+    U+2212,
+    U+2215,
+    U+FEFF,
+    U+FFFD;
+}
+
+@font-face {
+  font-family: Montserrat;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/styles/fonts/montserrat-italic.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF,
+    U+0131,
+    U+0152-0153,
+    U+02BB-02BC,
+    U+02C6,
+    U+02DA,
+    U+02DC,
+    U+0304,
+    U+0308,
+    U+0329,
+    U+2000-206F,
+    U+20AC,
+    U+2122,
+    U+2191,
+    U+2193,
+    U+2212,
+    U+2215,
+    U+FEFF,
+    U+FFFD;
+}
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* grid */
+  --grid-container-width: 83.4%;
+  --grid-column-width: calc(var(--grid-container-width) / 12);
+  --grid-gutter-width: 8.3%;
+
+  /* spacing */
+  --spacing-xxl: 48px;
+  --spacing-xl: 32px;
+  --spacing-l: 24px;
+  --spacing-m: 12px;
+  --spacing-s: 8px;
+  --spacing-xs: 4px;
+
+  /* color schemes */
+  color-scheme: light dark;
+
+  /* color tokens */
+  --color-gray-100: #f1f1f1;
+  --color-gray-200: #d3d3d3;
+  --color-gray-300: #b5b5b5;
+  --color-gray-400: #999;
+  --color-gray-500: #7d7d7d;
+  --color-gray-600: #636363;
+  --color-gray-700: #494949;
+  --color-gray-800: #313131;
+  --color-gray-900: #1b1b1b;
+  --color-green-100: #e1f5e3;
+  --color-green-200: #a3e1a8;
+  --color-green-300: #60cb6a;
+  --color-green-400: #24b032;
+  --color-green-500: #1e9029;
+  --color-green-600: #187220;
+  --color-green-700: #115418;
+  --color-green-800: #0c3910;
+  --color-green-900: #072009;
+  --color-teal-100: #e4f3f5;
+  --color-teal-200: #acdbdf;
+  --color-teal-300: #71c1c9;
+  --color-teal-400: #36a7b3;
+  --color-teal-500: #108a96;
+  --color-teal-600: #0d6d77;
+  --color-teal-700: #0a5158;
+  --color-teal-800: #06363b;
+  --color-teal-900: #041e21;
+  --color-blue-100: #eaf2ff;
+  --color-blue-200: #b9d4ff;
+  --color-blue-300: #88b6ff;
+  --color-blue-400: #5898ff;
+  --color-blue-500: #2176ff;
+  --color-blue-600: #0058e4;
+  --color-blue-700: #0041a9;
+  --color-blue-800: #002c74;
+  --color-blue-900: #001942;
+  --color-purple-100: #f4edfb;
+  --color-purple-200: #dfcbf2;
+  --color-purple-300: #c9a7ea;
+  --color-purple-400: #b385e1;
+  --color-purple-500: #9d60d8;
+  --color-purple-600: #843ccb;
+  --color-purple-700: #622c98;
+  --color-purple-800: #421e66;
+  --color-purple-900: #251139;
+  --color-magenta-100: #ffebf9;
+  --color-magenta-200: #ffc0ec;
+  --color-magenta-300: #ff8fde;
+  --color-magenta-400: #ff53cc;
+  --color-magenta-500: #eb00a5;
+  --color-magenta-600: #bd0084;
+  --color-magenta-700: #8e0064;
+  --color-magenta-800: #630045;
+  --color-magenta-900: #3b002a;
+  --color-red-100: #ffecea;
+  --color-red-200: #ffc4be;
+  --color-red-300: #ff9990;
+  --color-red-400: #ff6759;
+  --color-red-500: #f81400;
+  --color-red-600: #c71000;
+  --color-red-700: #950c00;
+  --color-red-800: #670800;
+  --color-red-900: #3c0500;
+  --color-orange-100: #ffeddc;
+  --color-orange-200: #ffc895;
+  --color-orange-300: #ff9e43;
+  --color-orange-400: #f37500;
+  --color-orange-500: #c76000;
+  --color-orange-600: #9e4c00;
+  --color-orange-700: #753800;
+  --color-orange-800: #4f2600;
+  --color-orange-900: #2d1500;
+  --color-yellow-100: #fff48e;
+  --color-yellow-200: #ebd400;
+  --color-yellow-300: #cab600;
+  --color-yellow-400: #ab9a00;
+  --color-yellow-500: #8c7e00;
+  --color-yellow-600: #6e6400;
+  --color-yellow-700: #514a00;
+  --color-yellow-800: #373100;
+  --color-yellow-900: #1e1b00;
+
+  /* named colors */
+  --color-light-base: 255 255 255;
+  --color-dark-base: 0 0 0;
+  --color-light: rgb(255 255 255);
+  --color-dark: rgb(0 0 0);
+  --color-text: light-dark(var(--color-dark), var(--color-light));
+  --color-link: light-dark(var(--color-gray-900), var(--color-gray-100));
+  --color-brand: var(--color-purple-500);
+  --color-accent: light-dark(var(--color-magenta-600), var(--color-magenta-500));
+  --color-background: light-dark(var(--color-light), var(--color-dark));
+  --color-shaded: light-dark(#f9f9f9, #111);
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --font-family: montserrat, "Trebuchet MS", sans-serif;
 
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
+  /* headings */
+  --heading-font-size-xxl: 32.44px;
+  --heading-font-size-xl: 28.83px;
+  --heading-font-size-l: 25.63px;
+  --heading-font-size-m: 22.78px;
+  --heading-font-size-s: 20.25px;
+  --heading-font-size-xs: 18px;
+  --heading-line-height: 1.15;
 
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
+  /* body */
+  --body-font-size-xxxl: 25px;
+  --body-font-size-xxl: 22px;
+  --body-font-size-xl: 20px;
+  --body-font-size-l: 18px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
+  --body-line-height: 1.6;
 
-  /* nav height */
-  --nav-height: 64px;
+  /* misc */
+  --header-height: 64px;
+  --breadcrumb-height: 24px;
 }
 
-/* fallback fonts */
-@font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+.light-scheme {
+  color-scheme: light;
 }
 
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
+.dark-scheme {
+  color-scheme: dark;
 }
 
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
+html {
+  scroll-padding-top: calc(var(--header-height) + 1rem);
 }
 
 body {
-  display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: var(--body-font-family);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: "Trebuchet MS", sans-serif;
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
-}
+  line-height: var(--body-line-height);
+  padding: var(--header-height) 0 0;
 
-body.appear {
-  display: block;
+  &.session {
+    /* only allow font loading if a session */
+    font-family: var(--font-family);
+  }
+
+  &.has-breadcrumb {
+    margin: calc(var(--header-height) + var(--breadcrumb-height)) 0 0;
+  }
+
+  &.no-header {
+    --header-height: 0;
+
+    margin: 0;
+  }
 }
 
 header {
-  height: var(--nav-height);
+  display: none;
+  height: var(--header-height);
+  position: fixed;
 }
 
-header .header,
-footer .footer {
-  visibility: hidden;
+a {
+  color: var(--color-link);
+
+  &.btn {
+    display: inline-block;
+    line-height: 1;
+    font-weight: 500;
+    text-decoration: none;
+    border: 2px solid;
+    padding: 8px 12px;
+    box-sizing: border-box;
+
+    &.btn-outline {
+      background: transparent;
+    }
+  }
+
+  &.btn-accent {
+    color: #fff;
+    background: var(--color-accent);
+    border: 2px solid var(--color-accent);
+
+    &.btn-outline {
+      color: var(--color-accent);
+    }
+  }
+
+  &.btn-primary {
+    color: var(--color-background);
+    background-color: var(--color-text);
+    border: 2px solid var(--color-text);
+
+    &.btn-outline {
+      color: var(--color-text);
+      background: transparent;
+    }
+  }
+
+  &.btn-secondary {
+    color: var(--color-background);
+    background-color: var(--color-gray-500);
+    border: 2px solid var(--color-gray-500);
+
+    &.btn-outline {
+      color: var(--color-gray-500);
+    }
+  }
+
+  &.btn-negative {
+    color: #fff;
+    background-color: var(--color-red-600);
+    border: 2px solid var(--color-red-600);
+
+    &.btn-outline {
+      color: var(--color-red-600);
+    }
+  }
 }
 
-header .header[data-block-status="loaded"],
-footer .footer[data-block-status="loaded"] {
-  visibility: visible;
+/* sections */
+.section {
+  display: block;
+
+  > .default-content {
+    max-width: var(--grid-container-width);
+    margin: 0 auto;
+  }
+}
+
+main {
+  ul,
+  ol {
+    padding-inline-start: 24px;
+
+    /* Reduce nested lists even further */
+    ul,
+    ol {
+      padding-inline-start: 12px;
+    }
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+li {
+  margin-block: 1em;
 }
 
 h1,
@@ -104,12 +332,8 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
   font-weight: 600;
-  line-height: 1.25;
-  scroll-margin: 40px;
+  line-height: var(--heading-line-height);
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -119,31 +343,8 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
-p,
-dl,
-ol,
-ul,
-pre,
-blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
-}
-
-code,
-pre {
-  font-size: var(--body-font-size-s);
-}
-
-pre {
-  padding: 16px;
-  border-radius: 8px;
-  background-color: var(--light-color);
-  overflow-x: auto;
-  white-space: pre;
-}
-
-main > div {
-  margin: 40px 16px;
+strong {
+  font-weight: 600;
 }
 
 input,
@@ -153,173 +354,38 @@ button {
   font: inherit;
 }
 
-/* links */
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-  overflow-wrap: break-word;
-}
-
-a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
-}
-
-/* buttons */
-p.button-wrapper {
-  margin: 12px 0;
-}
-
-a.button:any-link,
-button.button {
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
-  text-decoration: none;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-a.button[aria-disabled="true"],
-button.button:disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-a.button.primary,
-button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
-}
-
-a.button.primary:hover,
-a.button.primary:focus-visible,
-button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
-}
-
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary,
-button.button.secondary {
-  border-color: var(--text-color);
-  background-color: transparent;
-  color: var(--text-color);
-}
-
-a.button.secondary:hover,
-a.button.secondary:focus-visible,
-button.button.secondary:hover,
-button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
-a.button.accent,
-button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
-}
-
-a.button.accent:hover,
-a.button.accent:focus-visible,
-button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
-}
-
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-main img {
-  max-width: 100%;
-  width: auto;
+img {
+  width: 100%;
   height: auto;
 }
 
-.icon {
-  display: inline-block;
-  height: 24px;
-  width: 24px;
+svg {
+  width: 20px;
+  height: 20px;
 }
 
-.icon img {
-  height: 100%;
-  width: 100%;
-}
+/* @media (width >= 600px) {} */
 
-/* sections */
-main > .section {
-  margin: 40px 0;
-}
+/* @media (width >= 900px) {} */
 
-main > .section > div {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 24px;
-}
+/* @media (width >= 1200px) {} */
 
-main > .section:first-of-type {
-  margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
+@media (width >= 1440px) {
+  :root {
+    --grid-container-width: 1200px;
   }
 }
 
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
+main > div,
+.has-template,
+div[data-status] {
+  display: none;
+}
+
+aem-sidekick {
+  opacity: 0;
+
+  &[open="true"].is-ready {
+    opacity: 1;
+  }
 }
