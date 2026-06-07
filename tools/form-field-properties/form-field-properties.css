@@ -1,0 +1,198 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: adobe-clean, 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #2c2c2c;
+  background: #fff;
+}
+
+/* ── Header ── */
+.panel-title {
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1px solid #e1e1e1;
+  background: #f5f5f5;
+  flex-shrink: 0;
+}
+
+/* ── Field type grid ── */
+.type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 14px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.type-card {
+  padding: 12px 8px;
+  border: 1px solid #e1e1e1;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  font-family: inherit;
+  color: #2c2c2c;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.4;
+}
+
+.type-card:hover {
+  border-color: #2680eb;
+  background: #f0f5ff;
+  color: #2680eb;
+}
+
+/* ── Property form header ── */
+.prop-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e1e1e1;
+  flex-shrink: 0;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2680eb;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.prop-type {
+  font-weight: 600;
+  font-size: 13px;
+  color: #505050;
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #e1e1e1;
+  padding: 0 12px;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 8px 12px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  color: #6e6e6e;
+  white-space: nowrap;
+}
+
+.tab.active {
+  border-bottom-color: #2680eb;
+  color: #2680eb;
+  font-weight: 600;
+}
+
+/* ── Property fields ── */
+.prop-fields {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.prop-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prop-label {
+  font-size: 12px;
+  color: #6e6e6e;
+  font-weight: 500;
+}
+
+.required {
+  color: #d7373f;
+  margin-left: 2px;
+}
+
+.prop-row input[type='text'],
+.prop-row select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #fff;
+  color: #2c2c2c;
+}
+
+.prop-row input[type='text']:focus,
+.prop-row select:focus {
+  border-color: #2680eb;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(38, 128, 235, 0.2);
+}
+
+.checkbox-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prop-row input[type='checkbox'] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ── Insert button ── */
+.actions {
+  padding: 14px 16px;
+  border-top: 1px solid #e1e1e1;
+  flex-shrink: 0;
+}
+
+.insert-btn {
+  width: 100%;
+  padding: 10px;
+  background: #2680eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.insert-btn:hover {
+  background: #1473e6;
+}
+
+/* ── Loading / empty ── */
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6e6e6e;
+  font-size: 13px;
+}
